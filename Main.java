@@ -50,13 +50,13 @@ public class Main {
 
     private static void printMenu() {
         System.out.println("======================================");
-        System.out.println("       ONLINE BOOKSTORE (CLI)");
+        System.out.println("       ONLINE BOOKSTORE SYSTEM");
         System.out.println("======================================");
         System.out.println("1. List all books");
-        System.out.println("2. Place a new order (enqueue)");
-        System.out.println("3. Process next pending order (dequeue)");
-        System.out.println("4. Track an order by ID (binary search)");
-        System.out.println("5. Show processed orders (BinaryTree in-order)");
+        System.out.println("2. Place a new order");
+        System.out.println("3. Process next pending order");
+        System.out.println("4. Track an order by ID");
+        System.out.println("5. Show processed orders");
         System.out.println("0. Exit");
         System.out.println("======================================");
     }
@@ -89,7 +89,7 @@ public class Main {
     }
 
     private static void listBooks() {
-        System.out.println("Available books (sorted by title):");
+        System.out.println("Available books:");
         for (Book b : catalog) {
             System.out.println("  " + b);
         }
@@ -199,7 +199,7 @@ public class Main {
     }
 
     private static void showProcessedOrdersSorted() {
-        System.out.println("Processed orders (sorted by ID using BinaryTree in-order traversal):");
+        System.out.println("Processed orders:");
 
         processedOrdersTree.inOrder(order -> {
             System.out.println(order);
