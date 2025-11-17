@@ -1,3 +1,5 @@
+import src.models.Order;
+
 public class BinarySearch {
 
     /**
