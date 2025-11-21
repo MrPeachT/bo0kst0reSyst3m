@@ -34,7 +34,7 @@ public class Main {
                     trackOrderById();
                     break;
                 case 5:
-                    showProcessedOrdersSorted();
+                    showProcessedOrdersLifo();
                     break;
                 case 0:
                     running = false;
@@ -50,7 +50,7 @@ public class Main {
 
     private static void printMenu() {
         System.out.println("======================================");
-        System.out.println("       ONLINE BOOKSTORE SYSTEM");
+        System.out.println("           ONLINE BOOKSTORE");
         System.out.println("======================================");
         System.out.println("1. List all books");
         System.out.println("2. Place a new order");
@@ -84,7 +84,8 @@ public class Main {
             new Book(3, "Foundation", "Isaac Asimov", 7.99),
             new Book(4, "Hyperion", "Dan Simmons", 10.50),
             new Book(5, "Snow Crash", "Neal Stephenson", 8.99),
-            new Book(6, "The Martian", "Andy Weir", 6.99)
+            new Book(6, "The Martian", "Andy Weir", 6.99),
+            new Book(7, "Star Trek", "Grek Cox", 9.99),
         };
     }
 
@@ -102,6 +103,33 @@ public class Main {
             }
         }
         return null;
+    }
+
+    private static void showProcessedOrdersLifo() {
+        if (processedOrders.size() == 0) {
+            System.out.println("No processed orders.");
+            return;
+        }
+
+        int n = processedOrders.size();
+        Order[] arr = new Order[n];
+
+        int index = 0;
+        while (!processedOrders.isEmpty()) {
+            Order o = processedOrders.pop();
+            arr[index] = o;      
+            index++;
+        }
+
+        System.out.println("Processed orders:");
+    
+        for (int i = 0; i < n; i++) {
+            System.out.println(arr[i]);
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            processedOrders.push(arr[i]);
+        }
     }
 
     private static void placeNewOrder() {
